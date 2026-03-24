@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import http, { obterCategoriaPorSlug } from "../../http";
 import Loader from "../../componentes/Loader";
 import { useQuery } from "@tanstack/react-query";
+import ListaLivros from "../../componentes/ListaLivros";
 
 export default function Categoria() {
 
@@ -43,6 +44,7 @@ export default function Categoria() {
     return (
         <div>
             <TituloPrincipal texto={categoria?.nome ?? 'Carregando...'} />
+            <ListaLivros categoria={categoria!} />
         </div>
     )
 }
