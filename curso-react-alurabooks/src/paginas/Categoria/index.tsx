@@ -1,17 +1,16 @@
-import { useEffect, useState } from "react";
+// import {  useState } from "react";
 import TituloPrincipal from "../../componentes/TituloPrincipal";
-import { ICategoria } from "../../interfaces/ICategoria";
 import { useParams } from "react-router-dom";
-import http, { obterCategoriaPorSlug } from "../../http";
 import Loader from "../../componentes/Loader";
 import { useQuery } from "@tanstack/react-query";
 import ListaLivros from "../../componentes/ListaLivros";
+import { obterCategoriaPorSlug } from "../../http";
 
 export default function Categoria() {
 
     // const [categoria, setCategoria] = useState<ICategoria>()
 
-    const [carregando, setCarregando] = useState(true)
+    // const [carregando, setCarregando] = useState(true)
 
     const params = useParams()
 

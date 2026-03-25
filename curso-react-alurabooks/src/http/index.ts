@@ -1,6 +1,7 @@
 import axios from "axios";
 import { ICategoria } from "../interfaces/ICategoria";
 import { ILivro } from "../interfaces/ILivro";
+import { IAutor } from "../interfaces/IAutor";
 
 const http = axios.create({
     baseURL: 'http://localhost:8000',
@@ -47,3 +48,24 @@ export const obterProdutosDaCategoria = async(categoria: ICategoria) => {
     })
     return resposta.data
 }    
+
+export const obterAutor = async (autorId: number) => {
+  try {
+    const resposta = await http.get<IAutor>(`autores/${autorId}`)
+    return resposta.data
+  } catch (error) {
+    console.log('Não foi possivel obter o autor!')
+  }
+}
+
+export const obterLivro = async (slug: string) => {
+  const resposta = await http.get<ILivro[]>('livros', {
+    params: {
+      slug
+    }
+  })
+  if (resposta.data.length === 0) {
+    return null
+  }
+  return resposta.data[0]
+}

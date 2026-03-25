@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ICategoria } from "../../interfaces/ICategoria";
 import { obterProdutosDaCategoria } from "../../http";
 import CardLivro from "../CardLivro";
+import './ListaLivros.css'
 
 interface ListaLivrosProps {
     categoria: ICategoria
@@ -16,11 +17,11 @@ const { data: produtos } = useQuery({
 
 console.log(produtos)
 
-    return (<div>
+    return (<section className="livros">
         {produtos?.map(livro => (
             <CardLivro key={livro.id} livro={livro} />
         ))}
-    </div>)
+    </section>)
 }
 
 export default ListaLivros
